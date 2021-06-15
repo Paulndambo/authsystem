@@ -26,7 +26,7 @@ SECRET_KEY = 'b#s*_o(3t3ai_k(c5po@h7a=nj5#vjkd3u7ckhnx@)mi=8fn67'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+AUTH_USER_MODEL = 'api.User'
 
 # Application definition
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'data',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -85,6 +86,13 @@ DATABASES = {
 }
 
 
+REST_FRAMEWORK = {
+  'NON_FIELD_ERRORS_KEY': 'error',
+  'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -124,3 +132,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 ALLOWED_HOSTS = ['*']
 X_FRAME_OPTIONS = '*'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "machiniecp@gmail.com"
+EMAIL_HOST_PASSWORD = 'Paul40781998'
